@@ -1,31 +1,9 @@
-import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
-import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { bootstrap } from './server';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+const main = async () => {
+  const server = await bootstrap();
 
-  app.enableCors();
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: true,
-      whitelist: true,
-    }),
-  );
+  await server.listen(3000);
+};
 
-  // Setup Swagger
-  const config = new DocumentBuilder()
-    .setTitle('Random number API')
-    .setDescription('This API generates random numbers')
-    .setVersion('0.0.1')
-    .addTag('random-number')
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
-
-  await app.listen(3000);
-}
-
-bootstrap();
+main();
