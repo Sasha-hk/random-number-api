@@ -1,0 +1,36 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+      - name: Install packages
+        run: yarn install --immutable
+      - name: Run linter
+        run: yarn lint
+      - name: Run tests
+        run: yarn test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'yarn'
+      - name: Install packages
+        run: yarn install --immutable
+      - name: Build application
+        run: yarn build
+#      - name: Make .zip archive
+
