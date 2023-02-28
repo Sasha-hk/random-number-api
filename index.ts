@@ -8,6 +8,6 @@ export const handler: Handler = async (): // _: APIGatewayProxyEvent,
 Promise<APIGatewayProxyResultV2> => {
   return {
     statusCode: 200,
-    body: JSON.stringify('Hello from Lambda!'),
+    body: JSON.stringify('Hello from Lambda! 123123'),
   };
 };
