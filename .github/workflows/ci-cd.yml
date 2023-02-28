@@ -40,6 +40,6 @@ jobs:
       - name: Build application
         run: yarn build
       - name: Compress dist to the .zip archive
-        run: zip -j deploy.zip ./dist/*
+        run: zip -r deploy.zip ./dist/*
       - name: Deploy code to the Lambda function
         run: aws lambda update-function-code --function-name=random-number-api --zip-file=fileb://deploy.zip
