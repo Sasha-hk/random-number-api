@@ -38,7 +38,7 @@ jobs:
       - name: Install packages
         run: yarn install --immutable
       - name: Build application
-        run: yarn build
+        run: yarn build:ncc
       - name: Compress dist to the .zip archive
         run: zip -r deploy.zip ./dist/*
       - name: Deploy code to the Lambda function
