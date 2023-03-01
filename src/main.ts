@@ -1,9 +1,9 @@
 import { bootstrap } from './server';
 
-const main = async () => {
-  const server = await bootstrap();
+async function main() {
+  const app = await bootstrap();
 
-  await server.listen(3000);
-};
+  await app.listen(3000);
+}
 
 main();

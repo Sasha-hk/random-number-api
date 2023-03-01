@@ -37,9 +37,11 @@ jobs:
           aws-region: us-east-1
       - name: Install packages
         run: yarn install --immutable
-      - name: Build application
-        run: yarn build:ncc
-      - name: Compress dist to the .zip archive
-        run: zip -r deploy.zip ./dist/*
-      - name: Deploy code to the Lambda function
-        run: aws lambda update-function-code --function-name=random-number-api --zip-file=fileb://deploy.zip
+      - name: Deploy with serverless
+        run: sls deploy
+#      - name: Build application
+#        run: yarn build:ncc
+#      - name: Compress dist to the .zip archive
+#        run: zip -r deploy.zip ./dist/*
+#      - name: Deploy code to the Lambda function
+#        run: aws lambda update-function-code --function-name=random-number-api --zip-file=fileb://deploy.zip
