@@ -9,7 +9,7 @@ import {
 } from '@nestjs/swagger';
 
 @ApiTags('random-number')
-@Controller('random-number')
+@Controller('')
 export class RandomNumberController {
   constructor(private readonly randomNumberService: RandomNumberService) {}
 
