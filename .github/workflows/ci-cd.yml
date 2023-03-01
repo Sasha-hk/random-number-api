@@ -37,6 +37,8 @@ jobs:
           aws-region: us-east-1
       - name: Install packages
         run: yarn install --immutable
+      - name: Build application
+        run: yarn build
       - name: serverless deploy
         uses: serverless/github-action@v3.1
         with:
